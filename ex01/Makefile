@@ -3,7 +3,7 @@ SRC=PhoneBook.cpp\
 	Contact.cpp\
 	main.cpp\
 
-OBJS=${SRC:.c=.o}
+OBJS=${SRC:.cpp=.o}
 FLAGS=-Wall -Wextra -Werror
 CPPFLAGS=-std=c++98
 CPP=c++
