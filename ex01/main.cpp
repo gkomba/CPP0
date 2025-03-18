@@ -6,11 +6,16 @@
 /*   By: gkomba <gkomba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:15:27 by gkomba            #+#    #+#             */
-/*   Updated: 2025/03/16 22:21:27 by gkomba           ###   ########.fr       */
+/*   Updated: 2025/03/18 18:13:27 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.hpp"
+
+bool isNumeric(const std::string &str)
+{
+    return !str.empty() && str.find_first_not_of("+-0123456789") == std::string::npos;
+}
 
 bool    checkFieldEmpy(t_data data)
 {
@@ -24,20 +29,35 @@ bool    checkFieldEmpy(t_data data)
     return (true);
 }
 
-void    setData(t_data data, PhoneBook &phonebook)
+bool    setData(t_data data, PhoneBook &phonebook)
 {
           
     Contact NewContact;
     std::cout << "Enter First Name: " << std::endl;
     std::getline(std::cin, data.firstname);
+    if (std::cin.eof())
+       exit(0);
     std::cout << "Enter Last Name: " << std::endl;
     std::getline(std::cin, data.lastname);
+    if (std::cin.eof())
+       exit(0);
     std::cout << "Enter Nickname: " << std::endl;
     std::getline(std::cin, data.nickname);
+    if (std::cin.eof())
+       exit(0);
     std::cout << "Enter Phone Number: " << std::endl;
     std::getline(std::cin, data.phonenumber);
+    if (std::cin.eof())
+       exit(0);
+    if (!isNumeric(data.phonenumber))
+    {
+        std::cout << "Phone Number must be numeric.. Try again" << std::endl;
+        setData(data, phonebook);
+    }
     std::cout << "Enter Dark Secret: " << std::endl;
     std::getline(std::cin, data.darksecret);
+    if (std::cin.eof())
+       exit(0);
     std::cout << std::endl;
 
     if (checkFieldEmpy(data))
@@ -49,7 +69,9 @@ void    setData(t_data data, PhoneBook &phonebook)
         NewContact.SetDarkSecret(data.darksecret);
         phonebook.addNewContact(NewContact);
         std::cout << std::endl;
+        return (true);
     }
+    return (false);
 }
 
 int main()
@@ -66,9 +88,14 @@ int main()
     {
         std::cout << "Enter the Option" << std::endl;
         std::getline(std::cin, data.option);
+        if (std::cin.eof())
+            break ;
         std::cout << std::endl;
         if (data.option == "ADD")
-           setData(data, phonebook);
+        {
+            if (!setData(data, phonebook))
+                break ;
+        }
         else if (data.option == "SEARCH")
             phonebook.searchContacts();
         else if (data.option == "EXIT")
@@ -80,7 +107,7 @@ int main()
         {
             std::cout << "Enter a valid command: ADD/SEARCH/EXIT" << std::endl;
             std::cout << std::endl;
-        }        
+        }
     }
     return (0);
 }

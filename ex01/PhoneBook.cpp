@@ -6,7 +6,7 @@
 /*   By: gkomba <gkomba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 17:11:55 by gkomba            #+#    #+#             */
-/*   Updated: 2025/03/16 22:21:25 by gkomba           ###   ########.fr       */
+/*   Updated: 2025/03/18 18:04:06 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,11 @@ void    PhoneBook::searchContacts()const
     index = -1;
     std::cout << "Enter contact index: ";
     std::cin >> index;
+    if (std::cin.eof())
+    {
+        std::cout << std::endl;
+        exit(0);
+    }
     std::cin.ignore();
     if (index < 0 || index > totalContacts)
         std::cout << "Invalid index!" << std::endl;

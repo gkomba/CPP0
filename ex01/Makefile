@@ -6,12 +6,12 @@ SRC=PhoneBook.cpp\
 OBJS=${SRC:.cpp=.o}
 FLAGS=-Wall -Wextra -Werror
 CPPFLAGS=-std=c++98
-CPP=c++
+CXX=c++
 
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	${CPP} ${FLAGS} ${CPPFLAGS} -o ${NAME} ${OBJS}
+	${CXX} ${FLAGS} ${CPPFLAGS} -o ${NAME} ${OBJS}
 
 clean:
 	rm -f ${OBJS}

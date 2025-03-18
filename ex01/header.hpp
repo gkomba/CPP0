@@ -6,7 +6,7 @@
 /*   By: gkomba <gkomba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 18:10:56 by gkomba            #+#    #+#             */
-/*   Updated: 2025/03/16 22:14:31 by gkomba           ###   ########.fr       */
+/*   Updated: 2025/03/18 17:24:03 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ typedef struct  s_data
 } t_data;
 
 bool    checkFieldEmpy(t_data data);
-void    setData(t_data data, PhoneBook &phonebook);
+bool    setData(t_data data, PhoneBook &phonebook);
 
 #endif

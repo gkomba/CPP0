@@ -6,12 +6,13 @@
 /*   By: gkomba <gkomba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 16:15:44 by gkomba            #+#    #+#             */
-/*   Updated: 2025/03/16 21:29:09 by gkomba           ###   ########.fr       */
+/*   Updated: 2025/03/18 17:30:35 by gkomba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string.h>
+#include <cstdlib>
 #include <iomanip>
 
 class   Contact
